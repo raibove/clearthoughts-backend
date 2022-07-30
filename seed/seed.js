@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
-import {createUserSQL, createQuestionSQL} from "./sql.js"
+import {createUserSQL, createQuestionSQL, createAnswerSQL} from "./sql.js"
 dotenv.config();
 
 
@@ -13,6 +13,9 @@ const createTable = async ()=>{
 
         await connection.query(createQuestionSQL);
         console.log('***created question Table***');
+
+        await connection.query(createAnswerSQL);
+        console.log('***created answer Table***');
     }catch(err){
 		console.error(err);
     }
