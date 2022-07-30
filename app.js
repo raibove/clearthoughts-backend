@@ -28,6 +28,17 @@ app.post('/user', async (req, res) => {
   }
 })
 
+app.post('/question', async (req,res) => {
+  try{
+    let data = [req.body.title, req.body.description]
+    let resp = await connection.query('INSERT INTO question (title, description) VALUES (?)', [data])
+    res.send({id: resp[0].insertId})
+  }catch(err){
+    res.status(400)
+    res.send(err)
+  }
+})
+
 app.listen(process.env.PORT || 5001, () =>{
     console.log('App is running');
 });
