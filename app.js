@@ -54,14 +54,29 @@ app.post('/answer', async (req, res) => {
     let userId = req.body.userId
     let version = 1
     let getCurrentVersion = await connection.query('SELECT version from answer where userId = (?)', [userId]);
-    console.log(getCurrentVersion)
+  
     if(getCurrentVersion[0].length!=0){
       let latestVersion = getCurrentVersion[0].length
       version = getCurrentVersion[0][latestVersion-1].version+1
     }
+   
     let data = [userId, req.body.answer1, req.body.answer2, req.body.answer3, req.body.answer4, req.body.answer5, req.body.answer6, version]
     let response = await connection.query('INSERT INTO answer (userId, answer1, answer2, answer3, answer4, answer5, answer6, version) VALUES (?)', [data])
     res.send(response[0])
+  
+  }catch(err){
+    res.status(400)
+    res.send(err)
+  }
+})
+
+app.get('/answer', async (req, res) => {
+  try{
+
+    let userId = req.body.userId
+    let response = await connection.query('SELECT * from answer WHERE userId = (?)',[userId])
+    res.send(response[0])
+
   }catch(err){
     res.status(400)
     res.send(err)
