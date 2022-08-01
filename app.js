@@ -17,9 +17,11 @@ app.get('/', (_req, res) =>{
 
 app.post('/user', async (req, res) => {
   try{
-    let resp = await connection.query('INSERT INTO user (name) VALUES (?)',[req.body.name])
+    let name = ''
+    name = req.body.name
+    let resp = await connection.query('INSERT INTO user (name) VALUES (?)',[name])
     res.send({
-      name: req.body.name,
+      name: name,
       id: resp[0].insertId
     })
   }catch(err){
