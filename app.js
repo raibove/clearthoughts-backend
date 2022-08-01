@@ -9,11 +9,9 @@ const connection = await mysql.createConnection(process.env.DATABASE_URL);
 const app = express();
 
 app.use(express.json())
-app.use(cors({
-  origin: '*'
-}))
+app.use(cors())
 
-app.get('/', (req, res) =>{
+app.get('/', (_req, res) =>{
   res.json({msg: 'Hello World'});
 });
 
@@ -41,7 +39,7 @@ app.post('/question', async (req,res) => {
   }
 })
 
-app.get('/question', async (req,res) => {
+app.get('/question', async (_req,res) => {
   try{
     let response = await connection.query('Select * from question')
     res.send(response[0])
