@@ -1,4 +1,3 @@
-
 <h3 align="center">clearThoughts - Express yourself more clearly and confidently !!</h3>
 
 <p align="center">
@@ -10,7 +9,7 @@
   clearThoughts is a tool that will help you improve your communication skill. You can make use of what we see, feel and hear to express it to the listners, clearThoughts will serve as a guide so that you can improve your skill and practice.
 </p>
 
-Here is link to result from [SonarCloud](https://sonarcloud.io/project/overview?id=raibove_clearthoughts-backend) 
+Here is link to result from [SonarCloud](https://sonarcloud.io/project/overview?id=raibove_clearthoughts-backend)
 
 ---
 
@@ -18,11 +17,12 @@ Here is link to result from [SonarCloud](https://sonarcloud.io/project/overview?
 
 GitHub: [Front-End](https://github.com/raibove/clearthoughts-frontend) / [Back-End](https://github.com/raibove/clearthoughts-backend)
 
-Hashnode Article: [link]()
+Hashnode Article: [link](https://shwetakale.hashnode.dev/clearthoughts-express-yourself-more-clearly-completely-and-effectively)
 
 Deployed Links: [Site](https://clearthoughts.netlify.app/)
 
---- 
+---
+
 ## Running Locally 💻
 
 #### #1. Clone the repo
@@ -52,7 +52,7 @@ node seed/seed.js
 #### #5. Set up the Database
 
 ```sh
-nodemon start
+npm start
 ```
 
 Tables will be created in PlanetScale
