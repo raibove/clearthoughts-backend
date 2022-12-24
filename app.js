@@ -8,6 +8,16 @@ dotenv.config();
 const connection = await mysql.createConnection(process.env.DATABASE_URL);
 const app = express();
 
+function sanitize(data) {
+  // Strip out any potentially malicious characters
+  data = data.replace(/[^\w\s]/gi, '');
+
+  // Encode the data to ensure it is safe to use
+  data = encodeURIComponent(data);
+
+  return data;
+}
+
 app.use(express.json())
 app.use(cors())
 
@@ -18,7 +28,7 @@ app.get('/', (_req, res) =>{
 app.post('/user', async (req, res) => {
   try{
     let name = ''
-    name = req.body.name
+    name = sanitize(req.body.name);
     let resp = await connection.query('INSERT INTO user (name) VALUES (?)',[name])
     res.send({
       name: name,
